@@ -97,7 +97,6 @@ router.delete("/:id", middleware.checkProductOwnership, function(req, res){
     });
 });
 
-//middleware
 
 module.exports = router;
 
