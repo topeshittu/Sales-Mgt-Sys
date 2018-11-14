@@ -12,7 +12,7 @@ middlewareObj.checkProductOwnership = function(req, res, next){
                    req.flash("error", "Product not found")
                    res.redirect("back");
                } else{
-                   //does user own the product?
+                   //is user an admin? Only admin own the product?
                    if(foundProduct.author.id.equals(req.user._id)){
                       next();
                    } else{

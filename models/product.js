@@ -2,17 +2,18 @@ var mongoose = require("mongoose");
 
 //SCHEMA SET UP
 var ProductSchema = new mongoose.Schema({
-    name: String,
-    sellingPrice: Number,
-    openingStock: Number,
-    author: {
-        id:{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        },
-        username: String
+    name: {
+        type: String,
+        required: true
+    },
+    sellingPrice: {
+        type: Number,
+        required: true
+    },
+    openingStock:{
+        type: Number,
+        required: true
     }
-    
 });
 
 module.exports  = mongoose.model("Product", ProductSchema);

@@ -25,7 +25,7 @@ var data = [
 
 function seedDB(){
         //Remove All Products
-        Product.remove({}, function(err){
+        Product.deleteMany({}, function(err){
             if(err){
             console.log(err);
            } 

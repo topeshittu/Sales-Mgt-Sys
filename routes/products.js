@@ -10,7 +10,7 @@ router.get("/", function(req, res){
        if(err){
            console.log(err);
        } else{
-            res.render("products/index", {products: allProducts, page: "products"});
+            res.json(allProducts);
        }  
     });
 });
@@ -21,11 +21,8 @@ router.post("/", middleware.isLoggedIn, function(req, res){
   var name = req.body.name;
   var sellingPrice =req.body.sellingPrice;
   var openingStock = req.body.openingStock;
-  var author = {
-      id: req.user._id,
-      username: req.user.username
-  };
-  var newProduct ={name: name, openingStock: openingStock, sellingPrice: sellingPrice, author: author}
+ 
+ var newProduct ={name: name, openingStock: openingStock, sellingPrice: sellingPrice}
  //Create a new product and save to DB
  Product.create(newProduct, function(err, newlyCreated){
     if(err){
