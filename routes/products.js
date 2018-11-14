@@ -4,7 +4,7 @@ var Product = require("../models/product");
 var middleware = require("../middleware");
 
 //INDEX ROUTE Show all products
-router.get("/", function(req, res){
+router.get("/", middleware.isLoggedIn, function(req, res){
     //Get all products from DB
     Product.find({}, function(err, allProducts){
        if(err){
@@ -94,7 +94,6 @@ router.delete("/:id", middleware.checkProductOwnership, function(req, res){
     });
 });
 
-//middleware
 
 module.exports = router;
 
